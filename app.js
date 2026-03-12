@@ -4,7 +4,14 @@ const supabaseClient = createClient(
 "https://vvetymfsfggvtrvglhrj.supabase.co",
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2ZXR5bWZzZmdndnRydmdsaHJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzMzY0MjgsImV4cCI6MjA4ODkxMjQyOH0.RNvUimqkeWJo4SBJhmAipf2-XW-eVvgBwfV2hLo6-5k"
 );
-
+const menu = [
+{ name:"Margherita", price:199, img:"margherita.jpg" },
+{ name:"Pepperoni", price:249, img:"pepperoni.jpg" },
+{ name:"Veg Supreme", price:229, img:"vegsupreme.jpg" },
+{ name:"Farmhouse", price:239, img:"farmhouse.jpg" },
+{ name:"Paneer Tikka", price:259, img:"paneer.jpg" },
+{ name:"Cheese Burst", price:279, img:"cheeseburst.jpg" }
+];
 let cart = [];
 let total = 0;
 
