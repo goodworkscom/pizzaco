@@ -7,23 +7,17 @@ const supabaseClient = createClient(
 
 let orderNumber = Math.floor(Math.random()*900)+100;
 
-function placeOrder(){
+async function placeOrder(){
 
 let name = document.getElementById("name").value;
 
-alert("Order placed! Your number is " + orderNumber);
-
-localStorage.setItem(orderNumber,"preparing");
-
-}
-
-async function testOrder(){
 
 const { data, error } = await supabaseClient
 .from("orders")
 .insert([
 {
-customer_name: "Test Customer",
+order_number: orderNumber,
+customer_name: name,
 phone: "9999999999",
 order_type: "takeaway",
 items: "Margherita Pizza",
@@ -33,11 +27,13 @@ total: 199
 ]);
 
 if(error){
+alert("Order failed");
 console.log(error);
-alert("Error placing order");
 }
 else{
-alert("Order inserted successfully!");
+alert("Order placed! Your number is " + orderNumber);
+}
+
 }
 
 }
