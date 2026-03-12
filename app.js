@@ -75,5 +75,28 @@ total=0;
 updateCart();
 
 }
+function loadMenu(){
+
+let menuDiv = document.getElementById("menu");
+
+let html = "";
+
+menu.forEach(item => {
+
+html += `
+<div class="pizza">
+<img src="${item.img}" class="pizza-img">
+<h3>${item.name} ₹${item.price}</h3>
+<button onclick="addItem('${item.name}',${item.price})">Add</button>
+</div>
+`;
+
+});
+
+menuDiv.innerHTML = html;
+
+}
+
+window.onload = loadMenu;
 
 }
