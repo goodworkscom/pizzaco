@@ -1,3 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>The Pizza Co</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+}
+
+.menu{
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+justify-content:center;
+}
+
+.pizza{
+border:1px solid #ddd;
+padding:20px;
+border-radius:10px;
+width:220px;
+}
+
+.pizza-img{
+width:200px;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+button{
+background:#e63946;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:6px;
+cursor:pointer;
+}
+
+#cart{
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>THE PIZZA CO</h1>
+
 <h2>Pizza Menu</h2>
 
 <div id="menu" class="menu"></div>
+
+<h2>Your Cart</h2>
+
+<div id="cart"></div>
+
+<h3 id="total">Total ₹0</h3>
+
+<br>
+
+<input id="name" placeholder="Your name">
+
+<br><br>
+
+<input id="phone" placeholder="Phone">
+
+<br><br>
+
+<button onclick="placeOrder()">Confirm Order</button>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+
+</body>
+
+</html>
