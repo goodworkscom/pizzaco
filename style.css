@@ -1,19 +1,33 @@
 body{
 font-family:Arial;
 text-align:center;
-background:#3b1c1c;
-color:white;
+}
+
+.menu{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.pizza{
+border:1px solid #ddd;
+padding:20px;
+border-radius:10px;
+width:220px;
+}
+
+.pizza-img{
+width:200px;
+height:200px;
+object-fit:cover;
 }
 
 button{
-padding:15px;
-margin:10px;
-font-size:18px;
-background:orange;
+background:#e63946;
+color:white;
 border:none;
+padding:10px 20px;
+border-radius:6px;
 cursor:pointer;
-}
-
-img{
-margin:20px;
 }
