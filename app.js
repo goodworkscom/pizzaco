@@ -5,34 +5,67 @@ const supabaseClient = createClient(
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2ZXR5bWZzZmdndnRydmdsaHJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzMzY0MjgsImV4cCI6MjA4ODkxMjQyOH0.RNvUimqkeWJo4SBJhmAipf2-XW-eVvgBwfV2hLo6-5k"
 );
 
-let orderNumber = Math.floor(Math.random()*900)+100;
+let cart = [];
+let total = 0;
+
+function addItem(name, price){
+
+cart.push({name:name, price:price});
+
+total += price;
+
+updateCart();
+
+}
+
+function updateCart(){
+
+let cartDiv = document.getElementById("cart");
+
+let html="";
+
+cart.forEach(item=>{
+html += `<p>${item.name} ₹${item.price}</p>`;
+});
+
+cartDiv.innerHTML = html;
+
+document.getElementById("total").innerText = "Total ₹"+total;
+
+}
 
 async function placeOrder(){
 
 let name = document.getElementById("name").value;
-
+let phone = document.getElementById("phone").value;
 
 const { data, error } = await supabaseClient
 .from("orders")
 .insert([
 {
-order_number: orderNumber,
 customer_name: name,
-phone: "9999999999",
-order_type: "takeaway",
-items: "Margherita Pizza",
+phone: phone,
+items: cart.map(i=>i.name).join(", "),
 status: "preparing",
-total: 199
+total: total
 }
-]);
+])
+.select();
 
 if(error){
 alert("Order failed");
 console.log(error);
 }
 else{
-alert("Order placed! Your number is " + orderNumber);
-}
+
+let orderNumber = data[0].order_number;
+
+alert("Order placed! Your number is "+orderNumber);
+
+cart=[];
+total=0;
+
+updateCart();
 
 }
 
